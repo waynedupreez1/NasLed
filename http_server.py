@@ -16,8 +16,8 @@ from furl import furl
 import logging
 import log
 
-HOSTNAME = '127.0.0.1'
-PORT = 80  
+HOSTNAME = "0.0.0.0"
+PORT = 80
 
 #Handler class describes what to do with response
 class requestHandler(server.BaseHTTPRequestHandler): 
@@ -45,6 +45,7 @@ class requestHandler(server.BaseHTTPRequestHandler):
             mod_logger.info("Response Sent")     
         except Exception:
             self.send_response(400)
+
 def createServer():
     mod_logger.info("Creating Server on : %s Port: %d",HOSTNAME ,PORT)
     tcp_server = socketserver.TCPServer((HOSTNAME, PORT), requestHandler)
@@ -65,3 +66,22 @@ def loggerSetup():
     mod_logger = logging.getLogger(__name__)
     log.main(mod_logger, syslogging = True)
 
+
+def main(mod_logger, syslogging = False, facility = "LOG_LOCAL0"):
+
+    try:
+        tcp_server = createServer() 
+        openServer(tcp_server) 
+    except KeyboardInterrupt:
+        closeServer(tcp_server)  
+
+
+if __name__ == "__main__":
+	
+	mod_logger = logging.getLogger(__name__)
+
+	main(mod_logger, syslogging = False, facility = "LOG_LOCAL0")
+
+	mod_logger.info("Log succesfull")
+
+	sys.exit(0)	
