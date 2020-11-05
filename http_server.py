@@ -11,18 +11,36 @@ PORT - port to create server on, http default is 80, https default is 443.
 import socketserver
 from http import server
 import re
-import led_control
-from furl import furl
+##import led_control
+##from furl import furl
 import logging
 import log
 
-HOSTNAME = "0.0.0.0"
-PORT = 80
+#OSTNAME = "0.0.0.0"
+#PORT = 80
+
+HOSTNAME = "127.0.0.1"
+PORT = 8080
 
 #Handler class describes what to do with response
-class requestHandler(server.BaseHTTPRequestHandler): 
+class requestHandler(server.SimpleHTTPRequestHandler): 
     def do_GET(self):
-        try:
+
+        # Sending an '200 OK' response
+        self.send_response(200)
+
+        # Setting the header
+        self.send_header("Content-type", "text/html")
+
+        # Whenever using 'send_header', you also have to call 'end_headers'
+        self.end_headers()
+
+        if self.path == '/':
+            self.path = 'index.html'
+        return server.SimpleHTTPRequestHandler.do_GET(self)
+
+
+"""         try:
             mod_logger.info("Handling Request")
             f = furl(self.path)
             if f.args['action'] == 'set_mode':
@@ -44,7 +62,7 @@ class requestHandler(server.BaseHTTPRequestHandler):
             self.end_headers()
             mod_logger.info("Response Sent")     
         except Exception:
-            self.send_response(400)
+            self.send_response(400) """
 
 def createServer():
     mod_logger.info("Creating Server on : %s Port: %d",HOSTNAME ,PORT)

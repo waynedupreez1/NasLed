@@ -4,10 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/uikit.css">
+    <script src="assets/js/uikit-icons.js"></script>
+    <script src="assets/js/uikit-icons.min.js"></script>
+    <script src="assets/js/uikit.js"></script>
+
+    <style>
+        .button {
+          background-color: #48d34d; /* Green */
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+        
+        .button2 {background-color: #035fb4;} /* Blue */
+        .button3 {background-color: #e93124;} /* Red */ 
+        .button4 {background-color: #FFA500;} /* Orange */ 
+        .button5 {background-color: #e4e416;} /* Yellow */
+        .button6 {background-color: #0f0f0f;} /* Black */
+        </style>
+
+    <title>Nas</title>
+
+
 </head>
 <body>
-    <h3>Python SimpleHTTPServer</h3>
-    <p style="margin-left: 30px; color: rebeccapurple">Python 3 Web Server</p> 
+
+    <h1 class="uk-heading-divider" >Home Network Storage</h1>
+
+    <h3 class="uk-heading-divider">Other Services</h3>
+    <a href="http://192.168.2.5:9091"> <button class="uk-button uk-button-primary uk-button-large uk-width-1-1">TORRENT CLIENT</button> </a>
+    <hr class="uk-divider-icon">
+    <a href="http://192.168.2.5:8080"> <button class="uk-button uk-button-primary uk-button-large uk-width-1-1">PI Hole</button> </a>
+    <hr class="uk-divider-icon">
+
+    <h3 class="uk-heading-divider">Lamp Control - Timeout = 4 Hours</h3>
+
+    <h4 class="uk-heading-divider">Change Colour</h4>
+
+    <a href="http://192.168.2.5/?action=set&color=000000"> <button class="uk-width-1-1 button button6">Off</button> </a>
+    <a href="http://192.168.2.5/?action=set&color=00FF00"> <button class="uk-width-1-1 button">Green</button> </a>
+    <a href="http://192.168.2.5/?action=set&color=FF0000"> <button class="uk-width-1-1 button button2">Blue</button> </a> 
+    <a href="http://192.168.2.5/?action=set&color=0000FF"> <button class="uk-width-1-1 button button3">Red</button> </a>
+    <a href="http://192.168.2.5/?action=set&color=FFA500"> <button class="uk-width-1-1 button button4">Orange</button> </a>
+    <a href="http://192.168.2.5/?action=set&color=E4E416"> <button class="uk-width-1-1 button button5">Yellow</button> </a>
+
 </body>
 </html>
