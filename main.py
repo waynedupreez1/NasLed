@@ -1,32 +1,24 @@
 '''
 Main script for LED Control 
-
-Adeshwar Gounder 
-
-
 '''
 
 import http_server
 import led_control
-from colour import Color
 import log
 import logging
-
-PRODUCTION_MODE = '0'
-TEST_MODE = '1'
+import sys
 
 def setupLogger():
 
     global mod_logger
     mod_logger = logging.getLogger("led control")
-    log.main(mod_logger, syslogging = True)
+    log.main(mod_logger, syslogging = False)
     mod_logger.info("Starting LED control code")
     http_server.loggerSetup()
     led_control.loggerSetup()
 
 def initLEDSetup():
     led_control.stripSetup()    
-    led_control.setMode(PRODUCTION_MODE)
     led_control.setColor('FF0000')
 
 def main():
@@ -44,3 +36,4 @@ def main():
 # Main program logic follows:
 if __name__ == '__main__':
     main()
+    sys.exit(0)

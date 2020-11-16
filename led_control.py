@@ -25,7 +25,7 @@ LED_CHANNEL_0  = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 #set the colour as requested
 def setColor(color):
     color_int = int(color,16)
-    mod_logger.info("Setting Colour")
+    mod_logger.info("Setting Colour to: %s", color_int)
     for i in range(strip.numPixels()):
         strip.setPixelColor(i, color_int)
     strip.show()
@@ -96,6 +96,7 @@ def wipe(color, duration):
 
         
 def stripSetup():
+    mod_logger.info("Setup LED strip")
     global strip 
     strip = PixelStrip(LED_COUNT, LED_PIN_CH_0, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL_0, WS2811_STRIP_BGR)
     strip.begin()
